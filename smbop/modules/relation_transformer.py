@@ -45,19 +45,19 @@ class RelationTransformer(Seq2SeqEncoder):
         if tfixup:
             self.fixup_initialization()
 
-    @overrides
+
     def get_input_dim(self) -> int:
         return self._input_dim
 
-    @overrides
+
     def get_output_dim(self) -> int:
         return self._input_dim
 
-    @overrides
+
     def is_bidirectional(self) -> bool:
         return False
 
-    @overrides
+
     def forward(self, enc, relation, mask):
         return self.encoder(enc, relation, mask)
 

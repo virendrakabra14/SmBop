@@ -174,7 +174,7 @@ class SmbopSpiderDatasetReader(DatasetReader):
     def process_instance(self, instance: Instance, index: int):
         return instance
 
-    @overrides
+
     def _read(self, file_path: str):
         if file_path.endswith(".json"):
             yield from self._read_examples_file(file_path)
@@ -210,7 +210,7 @@ class SmbopSpiderDatasetReader(DatasetReader):
                         cache_buffer = []
                     if total_cnt in sent_set:
                         continue
-                    else:    
+                    else:
                         ins = self.create_instance(ex)
                         cache_buffer.append([total_cnt, ins])
                     if ins is not None:
@@ -279,7 +279,7 @@ class SmbopSpiderDatasetReader(DatasetReader):
             )
             if arit_list or haslist_list:
                 print(f"could'nt create RA for:  {sql}")
-                
+
                 return None
             if self.value_pred:
                 for a, b in zip(tree_obj_values.leaves, tree_obj.leaves):

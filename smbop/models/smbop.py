@@ -316,7 +316,7 @@ class SmbopParser(Model):
             self._rule_tensor = self._rule_tensor.to(device)
             self.flag_move_to_gpu = False
     """
-    
+
 
 #enc
 the question concatenated with the schema
@@ -324,8 +324,8 @@ the question concatenated with the schema
 #db_id
 the id of the database schema we want to execute the query against
 
-#schema_hash 
-the hash of every schema string (applying dethash to every schema element) 
+#schema_hash
+the hash of every schema string (applying dethash to every schema element)
 
 #schema_types
 the type of every schema element (Value or Table), Value is either a Column or a literal.
@@ -349,7 +349,7 @@ used to reconstruct the tree for evaluation (this is added_values concatenated w
 a boolean vector to tell if a given leaf is a gold leaf (i.e it corrosponds to a schema_hash that is in hash_gold_levelorder[0]).
 
 #lengths
-the length of the schema and the question, this is used to seperate them. 
+the length of the schema and the question, this is used to seperate them.
 
 #offsets
 an array of size [batch_size, max_entity_token_length, 2] that contains the start and end indices for each schema token (and question, but that is inefficiet)
@@ -499,7 +499,7 @@ a boolean vector to tell if a given span is a gold span (i.e it corrosponds to a
 
             else:
                 final_span_scores = span_scores
-            
+
 
             _, leaf_span_mask, best_spans = allennlp.nn.util.masked_topk(
                 final_span_scores.view([batch_size, -1]),
@@ -578,7 +578,7 @@ a boolean vector to tell if a given span is a gold span (i.e it corrosponds to a
 
         else:
             final_leaf_indices = top_beam_indices
-            
+
         leaf_schema_rep = allennlp.nn.util.batched_index_select(
             embedded_schema.contiguous(), final_leaf_indices
         )
@@ -1106,7 +1106,7 @@ a boolean vector to tell if a given span is a gold span (i.e it corrosponds to a
         a = a.fmod_(self.hasher.tensor1)
         return a
 
-    @overrides
+
     def get_metrics(self, reset: bool = False) -> Dict[str, float]:
         out = {
             "final_beam_acc": self._final_beam_acc.get_metric(reset),
